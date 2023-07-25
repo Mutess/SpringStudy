@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.emp-mapper">
+	<select id="empListData" resultType="EmpVO"> <!-- resultType은 Sql문을 실행한 결과값을 받아줌 == ResultSet -->
+		SELECT empno,ename,job,hiredate,sal 
+		FROM emp
+		ORDER BY sal DESC
+	</select>
+	<select id="empDetailData" resultType="EmpVO" parameterType="int">
+		<!-- 
+			ps.setInt()
+			ps.setString()
+		-->
+		SELECT empno,ename,job,TO_CHAR(hiredate,'YYYY-MM-DD') as dbday,sal,comm,mgr,deptno
+		FROM emp
+		WHERE empno=#{empno}
+	</select> <!-- 컬럼명하고 VO에 있는 변수명의 이름이 일치해야함 그래야 해당 변수에 값이 들어감 -->
+</mapper>
