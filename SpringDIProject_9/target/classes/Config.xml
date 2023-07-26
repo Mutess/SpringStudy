@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 
+		properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, objectWrapperFactory?, 
+ 		reflectorFactory?, plugins?, environments?, databaseIdProvider?, mappers?
+ 		
+ 		?가 있으면 써도되고 안써도 되고 
+ 		?가 없으면 무조건 사용해야함
+	 -->
+	 <!-- VO 등록 typeAliases -->
+	 <typeAliases>
+	 	<typeAlias type="com.sist.dao.StudentVO" alias="StudentVO"/>
+	 </typeAliases>
+	 <!-- SQL 등록 mappers -->
+	 <mappers>
+	 	<mapper resource="com/sist/dao/student-mapper.xml"/>
+	 </mappers>
+</configuration>
