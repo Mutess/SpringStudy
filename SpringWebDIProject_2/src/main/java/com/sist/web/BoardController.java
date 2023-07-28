@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 import com.sist.dao.*;
@@ -51,6 +52,12 @@ public class BoardController {
 		return "redirect:list.do";
 	}
 	// 데이터 수정
+	@GetMapping("update.do")
+	public String board_update(int no,Model model) { //model객체는 전송객채 (request대신 사용)
+		BoardVO vo=dao.boardUpdateData(no);
+		model.addAttribute("vo",vo);
+		return "board/update";
+	}
 	// 데이터 삭제
 	// 상세보기
 	/*
@@ -68,6 +75,33 @@ public class BoardController {
 		model.addAttribute("vo",vo);
 		return "board/detail";
 	}
+	//delete.do?no=${vo.no } 400 : Bad Request
+	@GetMapping("delete.do")
+	public String board_delete(int no,Model model) {
+		model.addAttribute("no", no);
+		return "board/delete";
+	}
+	@PostMapping("delete_ok.do")
+//	@ResponseBody 문자열로 줄수가 있음
+	public String board_delect_ok(int no,String pwd,Model model) {
+		boolean bCheck=dao.boardDelete(no, pwd);
+		model.addAttribute("bCheck", bCheck);
+		return "board/delete_ok";
+	}
+	/*
+		1. Spring MVC
+			1) DispatcherServlet 등록 => web.xml 가장 먼저 세팅
+				=> 클래스를 등록한 파일 셋팅 (클래스 관리)
+				=> 한글 변환 코드
+			2) 클래스 제작 (순서)
+				=> VO
+				=> Mapper
+				=> DAO
+				=> Model
+			3) application.xml (클래스 등록)
+			4) JSP
+		-------------------------------------------
+	 */
 	// 검색 ==> 동적쿼리
 	// 
 }

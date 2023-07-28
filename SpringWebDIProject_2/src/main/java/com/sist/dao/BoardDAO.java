@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -43,5 +44,37 @@ public class BoardDAO {
 	public BoardVO BoardDetailData(int no) {
 		mapper.hitIncrement(no); //조회수 증가
 		return mapper.BoardDetailData(no); //데이터 가져오기
+	}
+	
+	//수정
+/*	@Select("SELECT no,name,subject,content "
+			+ "FROM springBoard "
+			+ "WHERE no=#{no}") */
+	public BoardVO boardUpdateData(int no) {
+		return mapper.boardUpdateData(no);
+	}
+/*	@Select("SELECT pwd FROM springBoard "
+			+ "WHERE no=#{no}")
+	@Update("UPDATE springBoard SET "
+			+ "name=#{name},subject=#{subject},content=#{content} "
+			+ "WHERE no=#{no}") */
+	public boolean boardUpdate(BoardVO vo) {
+		boolean bCheck=false;
+		String db_pwd=mapper.boardGetPassword(vo.getNo());
+		if(db_pwd.equals(vo.getPwd())) {
+			bCheck=true;
+			mapper.boardUpdate(vo);
+		}
+		return bCheck;
+	}
+	
+	public boolean boardDelete(int no,String pwd) {
+		boolean bCheck=false;
+		String db_pwd=mapper.boardGetPassword(no);
+		if(db_pwd.equals(pwd)) {
+			bCheck=true;
+			mapper.boardDelete(no);
+		}
+		return bCheck;
 	}
 }

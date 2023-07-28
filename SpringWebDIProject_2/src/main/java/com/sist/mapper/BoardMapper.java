@@ -3,6 +3,7 @@ package com.sist.mapper;
 // VO => mapper => DAO => Controller
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -16,7 +17,7 @@ public interface BoardMapper {
 			+ "FROM springBoard)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	// 							map.get("start") map.get("end")
-	public List<BoardVO> boardListData(Map map);
+	public List<BoardVO> boardListData(Map map); //Map는 VO에 없는 변수가 있을때
 	// 총페이지
 	@Select("SELECT CEIL(COUNT(*)/10.0) FROM springBoard")
 	public int boardTotalPage();
@@ -35,5 +36,21 @@ public interface BoardMapper {
 			+ "WHERE no=#{no}")
 	public BoardVO BoardDetailData(int no);
 	
+	//수정
+	@Select("SELECT no,name,subject,content "
+			+ "FROM springBoard "
+			+ "WHERE no=#{no}")
+	public BoardVO boardUpdateData(int no);
 	
+	@Select("SELECT pwd FROM springBoard "
+			+ "WHERE no=#{no}")
+	public String boardGetPassword(int no);
+	@Update("UPDATE springBoard SET "
+			+ "name=#{name},subject=#{subject},content=#{content} "
+			+ "WHERE no=#{no}")
+	public void boardUpdate(BoardVO vo);
+	
+	@Delete("DELETE FROM springBoard "
+			+ "WHERE no=#{no}")
+	public void boardDelete(int no);
 }
