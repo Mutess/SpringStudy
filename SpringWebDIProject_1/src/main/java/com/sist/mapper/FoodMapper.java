@@ -1,12 +1,14 @@
 package com.sist.mapper;
 
 import java.util.*;
+
               
 import org.apache.ibatis.annotations.Select;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sist.vo.*;
-import lombok.Setter;
 public interface FoodMapper {
+	@Autowired
 	@Select("SELECT cno,title,poster,subtitle "
 			+ "FROM food_category "
 			+ "ORDER BY cno ASC")
