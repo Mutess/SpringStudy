@@ -26,7 +26,7 @@
 		<c:forEach var="vo" items="${list }">
 			<tr>
 			<td width="10%" class="text-center">${vo.no }</td>
-			<td width="45%">${vo.subject }</td>
+			<td width="45%"><a href="../databoard/detail.do?no=${vo.no}">${vo.subject }</a></td>
 			<td width="15%" class="text-center">${vo.name }</td>
 			<td width="20%" class="text-center">${vo.dbday }</td>
 			<td width="10%" class="text-center">${vo.hit }</td>
@@ -36,6 +36,7 @@
 	<table class="table">
 		<tr>
 			<td class="text-left">
+				<form method="post" action="../databoard/find.do">
 				Search:<select name=fs class="input-sm">
 					<option value="name">이름</option> 
 					<option value="subject">제목</option> 
@@ -43,6 +44,7 @@
 				</select>
 				<input type=text name=ss class="input-sm" size=15>
 				<button class="btn btn-sm btn-success">검색</button>
+				</form>
 			</td>
 			<td class="text-right">
 				<a href="#" class="btn btn-sm btn-danger">이전</a>
