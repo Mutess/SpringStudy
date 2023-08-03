@@ -55,10 +55,10 @@
       <table class="table">
         <tr>
           <td class="text-left">
-          <form method="post" action="find.do" class="inline">
-           Search:<input type="checkbox" name="fs" value="name">이름
-           <input type="checkbox" name="fs" value="subject">제목
-           <input type="checkbox" name="fs" value="content">내용
+          <form method="post" action="../board/find.do" class="inline">
+           Search:<input type="checkbox" name="fs" value="N">이름
+           <input type="checkbox" name="fs" value="S">제목
+           <input type="checkbox" name="fs" value="C">내용
             <input type=text name=ss size=15 class="input-sm">
             <button class="btn btn-sm btn-danger">검색</button>
            </form>
