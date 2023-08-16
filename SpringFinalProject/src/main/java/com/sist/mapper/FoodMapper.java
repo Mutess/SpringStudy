@@ -9,4 +9,8 @@ public interface FoodMapper {
 			+ "FROM food_category "
 			+ "ORDER BY cno ASC")
 	public List<CategoryVO> foodCategoryListData();
+	
+	@Select("SELECT title,subtitle FROM food_category "
+			+ "WHERE cno=#{cno}")
+	public CategoryVO foodCategoryInfoData(int cno);
 }

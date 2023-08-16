@@ -14,4 +14,10 @@ public class FoodDAO {
 	public List<CategoryVO> foodCategoryListData(){
 		return mapper.foodCategoryListData();
 	}
+	
+/*	@Select("SELECT title,subtitle FROM food_category "
+			+ "WHERE cno=#{cno}")*/
+	public CategoryVO foodCategoryInfoData(int cno) {
+		return mapper.foodCategoryInfoData(cno);
+	}
 }
