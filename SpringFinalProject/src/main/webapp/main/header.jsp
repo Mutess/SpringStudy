@@ -60,16 +60,16 @@
       </li> -->
       <li><a class="drop" href="#">맛집</a>
         <ul>
-          <li><a href="pages/gallery.html">지역별 맛집 찾기</a></li>
-          <li><a href="pages/full-width.html">맛집 추천</a></li>
+          <li><a href="../food/food_find.do">지역별 맛집 찾기</a></li>
+          <li><a href="../food/food_recommand.do">맛집 추천</a></li>
           <li><a href="pages/sidebar-left.html">맛집 예약</a></li>
         </ul>
       </li>
       <li><a class="drop" href="#">레시피</a>
         <ul>
-          <li><a href="pages/gallery.html">레시피</a></li>
-          <li><a href="pages/full-width.html">쉐프</a></li>
-          <li><a href="pages/sidebar-left.html">레시피 만들기</a></li>
+          <li><a href="../recipe/recipe_list.do">레시피</a></li>
+          <li><a href="../recipe/chef_list.do">쉐프</a></li>
+          <li><a href="../recipe/recipe_make.do">레시피 만들기</a></li>
         </ul>
       </li>
       <li><a class="drop" href="#">서울 여행</a>
@@ -134,6 +134,7 @@
 							this.$refs.login_pwd.focus();
 						}else{
 							console.log(this.sessionId)
+							console.log(this.ck)
 							//this.sessionId=res.data
 							location.href="../main/main.do";
 						}
