@@ -16,6 +16,11 @@ public interface FoodMapper {
 			+ "WHERE cno=#{cno}")
 	public CategoryVO foodCategoryInfoData(int cno);
 	
+	@Select("SELECT fno,name,address,phone, type,poster,score "
+			+ "FROM food_house "
+			+ "WHERE cno=#{cno}")
+	public List<FoodVO> foodListData(int cno);
+	
 //	<select id="foodFindData" resultType="FoodVO" parameterType="hashmap">
 	public List<FoodVO> foodFindData(Map map);
 	
@@ -26,4 +31,5 @@ public interface FoodMapper {
 			+ "FROM food_location "
 			+ "WHERE fno=#{fno}")
 	public FoodVO foodDetailData(int fno);
+	
 }
