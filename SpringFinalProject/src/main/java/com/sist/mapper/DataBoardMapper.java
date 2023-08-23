@@ -28,4 +28,23 @@ public interface DataBoardMapper {
 			+ "WHERE no=#{no}")
 	public DataboardVO dataBoardDetailData(int no);
 	
+	@Select("SELECT pwd FROM springDataBoard "
+			+ "WHERE no=#{no}")
+	public String databoardGetPassword(int no);
+	
+	@Update("UPDATE springDataBoard SET "
+			+ "name=#{name}, subject=#{subject},content=#{content} "
+			+ "WHERE no=#{no}")
+	public void databoardUpdate(DataboardVO vo);
+	
+	@Delete("DELETE FROM springDataBoard WHERE no=#{no}")
+	public void databoardDelete(int no);
+	
+	@Select("SELECT filname,filecount FROM springDataboard "
+			+ "WHERE no=#{no}")
+	public DataboardVO databoardFileInfoData(int no);
+	
+/*	@Select("SELECT content FROM springDataBoard "
+			+ "WHERE name=#{name}")
+	public List<String> databoardContentData(String name);*/
 }

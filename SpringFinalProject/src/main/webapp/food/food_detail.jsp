@@ -98,7 +98,7 @@
           </tr>
           <tr :id="'u'+rvo.no" class="updates" style="display: none;">
           <td colspan="2">
-            <textarea rows="4" cols="60" id="msg" style="float: left;">{{rvo.msg}}</textarea>
+            <textarea rows="4" cols="60" :id="'msg'+rvo.no" style="float: left;">{{rvo.msg}}</textarea>
             <button style="float: left; background-color: blue; color: white; width: 100px; height: 87px;" @click="replyUpdate(rvo.no)">수정하기</button>
           </td>
          </tr>
@@ -215,11 +215,7 @@ let foodDetail=new Vue({
 			}
 		},
 		replyUpdate:function(no){
-			let msg=$('#msg').val();
-			if(msg.trim()===""){
-				this.$refs.msg.focus()
-				return;
-			}
+			 let msg=$('#msg'+no).val()
 			axios.post('../reply/reply_update_vue.do',null,{
 				params:{
 					no:no,

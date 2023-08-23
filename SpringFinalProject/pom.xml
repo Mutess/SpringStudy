@@ -497,9 +497,14 @@
 		</dependency>
 		<!-- 자바 메일 -->
 		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>mail</artifactId>
-		    <version>1.4.7</version>
+	         <groupId>javax.mail</groupId>
+	         <artifactId>javax.mail-api</artifactId>
+	         <version>1.4.7</version>
+	    </dependency>
+	    <dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.1</version>
 		</dependency>
 		<!-- 자바 웹소켓 -->
 		<dependency>
@@ -508,6 +513,14 @@
 		    <version>1.1</version>
 		    <scope>provided</scope>
 		</dependency>
+	    <dependency>
+		    <groupId>com.snu</groupId>
+		    <artifactId>kokoma</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/org.snu.ids.ha.jar</systemPath>
+		</dependency>
+		
 	</dependencies>
 	
 	
