@@ -42,4 +42,13 @@ public interface FoodMapper {
 			+ "WHERE fno=#{fno}")
 	public FoodVO foodDetailHouseData(int fno);
 	
+	//추천
+	@Select("SELECT DISTINCT name FROM food_location WHERE LENGTH(name)>1")
+	public List<String> foodNamGetData();
+	// => 시
+	//실제 정보
+	@Select("SELECT fno,name,poster FROM food_location "
+			+ "WHERE name=#{name}")
+	public FoodVO foodRecommandInfoData(String name);
+	
 }

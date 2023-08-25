@@ -53,5 +53,18 @@ public class FoodDAO {
 		return mapper.foodDetailHouseData(fno);
 	}
 	
+	//추천
+//	@Select("SELECT DISTINCT name FROM food_location")
+	public List<String> foodNamGetData(){
+		return mapper.foodNamGetData();
+	}
+	// => 시
+	//실제 정보
+//	@Select("SELECT fno,name,poster FROM food_location"
+//			+ "WHERE name=#{name} AND rownum<=1 AND LENGTH(name)>1")
+	public FoodVO foodRecommandInfoData(String name) {
+		return mapper.foodRecommandInfoData(name);
+	}
+	
 
 }
